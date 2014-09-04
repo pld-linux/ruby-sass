@@ -2,7 +2,7 @@
 Summary:	A powerful but elegant CSS compiler that makes CSS fun again
 Name:		ruby-%{pkgname}
 Version:	3.4.2
-Release:	1
+Release:	2
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
@@ -57,10 +57,10 @@ rm ri/created.rid
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{ruby_vendorlibdir},%{ruby_ridir},%{ruby_rdocdir},%{_bindir}}
+install -d $RPM_BUILD_ROOT{%{ruby_rubylibdir},%{ruby_ridir},%{ruby_rdocdir},%{_bindir}}
 
 cp -a bin/* $RPM_BUILD_ROOT%{_bindir}
-cp -a lib/* $RPM_BUILD_ROOT%{ruby_vendorlibdir}
+cp -a lib/* $RPM_BUILD_ROOT%{ruby_rubylibdir}
 
 cp -a ri/* $RPM_BUILD_ROOT%{ruby_ridir}
 install -d $RPM_BUILD_ROOT%{ruby_rdocdir}/%{name}-%{version}
@@ -78,8 +78,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/sass
 %attr(755,root,root) %{_bindir}/sass-convert
 %attr(755,root,root) %{_bindir}/scss
-%{ruby_vendorlibdir}/sass
-%{ruby_vendorlibdir}/sass.rb
+%{ruby_rubylibdir}/sass
+%{ruby_rubylibdir}/sass.rb
 %{ruby_specdir}/%{pkgname}-%{version}.gemspec
 
 %files rdoc
