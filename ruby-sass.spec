@@ -7,7 +7,7 @@ License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
 # Source0-md5:	51f92be34834e250f4f55d93dbd2024a
-URL:		http://github.com/rtomayko/%{pkgname}
+URL:		http://github.com/rtomayko/sass
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.665
 BuildArch:	noarch
@@ -17,7 +17,7 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Sass makes CSS fun again. Sass is an extension of CSS3, adding nested
 rules, variables, mixins, selector inheritance, and more. It's
 translated to well-formatted, standard CSS using the command line tool
-or a web-framework plugin. 
+or a web-framework plugin.
 
 %package rdoc
 Summary:	HTML documentation for %{pkgname}
