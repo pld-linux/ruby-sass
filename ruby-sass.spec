@@ -1,3 +1,7 @@
+#
+# Conditional build:
+%bcond_without	doc			# don't build ri/rdoc
+
 %define		pkgname	sass
 Summary:	A powerful but elegant CSS compiler that makes CSS fun again
 Name:		ruby-%{pkgname}
@@ -58,9 +62,15 @@ s=$(ruby -e "puts File.read('VERSION_NAME').strip.inspect")
 # write .gemspec
 %__gem_helper spec
 
+%if %{with doc}
 rdoc --ri --op ri lib
 rdoc --op rdoc lib
+rm -r ri/ActionController
+rm -r ri/Merb
+rm -r ri/OrderedHash
+rm ri/cache.ri
 rm ri/created.rid
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
@@ -89,6 +99,7 @@ rm -rf $RPM_BUILD_ROOT
 %{ruby_rubylibdir}/sass.rb
 %{ruby_specdir}/%{pkgname}-%{version}.gemspec
 
+%if %{with doc}
 %files rdoc
 %defattr(644,root,root,755)
 %{ruby_rdocdir}/%{name}-%{version}
@@ -96,3 +107,4 @@ rm -rf $RPM_BUILD_ROOT
 %files ri
 %defattr(644,root,root,755)
 %{ruby_ridir}/Sass
+%endif
