@@ -2,14 +2,16 @@
 Summary:	A powerful but elegant CSS compiler that makes CSS fun again
 Name:		ruby-%{pkgname}
 Version:	3.4.2
-Release:	2
+Release:	3
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
 # Source0-md5:	51f92be34834e250f4f55d93dbd2024a
+Patch0:		version.patch
 URL:		http://github.com/rtomayko/sass
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.665
+BuildRequires:	sed >= 4.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -45,14 +47,19 @@ Dokumentacji w formacie ri dla %{pkgname}.
 
 %prep
 %setup -q -n %{pkgname}-%{version}
+%patch0 -p1
 
 %build
+s=$(ruby -e "puts File.read('VERSION').strip.split('.').map {|n| n =~ /^[0-9]+$/ ? n.to_i : n}.inspect")
+%{__sed} -i -e "s#__VERSION__#$s#" lib/sass/version.rb
+s=$(ruby -e "puts File.read('VERSION_NAME').strip.inspect")
+%{__sed} -i -e "s#__VERSION_NAME__#$s#" lib/sass/version.rb
+
 # write .gemspec
 %__gem_helper spec
 
 rdoc --ri --op ri lib
 rdoc --op rdoc lib
-# rm -r ri/NOT_THIS_MODULE_RELATED_DIRS
 rm ri/created.rid
 
 %install

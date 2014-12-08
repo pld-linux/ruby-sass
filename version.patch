@@ -1,0 +1,15 @@
+--- sass-3.4.2/lib/sass/version.rb~	2014-12-08 14:43:28.000000000 +0200
++++ sass-3.4.2/lib/sass/version.rb	2014-12-08 14:49:08.606534909 +0200
+@@ -47,9 +47,9 @@
+     def version
+       return @@version if defined?(@@version)
+ 
+-      numbers = File.read(Sass::Util.scope('VERSION')).strip.split('.').
+-        map {|n| n =~ /^[0-9]+$/ ? n.to_i : n}
+-      name = File.read(Sass::Util.scope('VERSION_NAME')).strip
++      numbers = __VERSION__
++      name = __VERSION_NAME__
++
+       @@version = {
+         :major => numbers[0],
+         :minor => numbers[1],
