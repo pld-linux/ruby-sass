@@ -6,7 +6,7 @@
 Summary:	A powerful but elegant CSS compiler that makes CSS fun again
 Name:		ruby-%{pkgname}
 Version:	3.4.2
-Release:	3
+Release:	4
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
