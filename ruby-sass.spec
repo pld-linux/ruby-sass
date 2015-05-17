@@ -1,20 +1,22 @@
 #
 # Conditional build:
-%bcond_without	doc			# don't build ri/rdoc
+%bcond_without	doc	# don't build ri/rdoc
 
 %define		pkgname	sass
 Summary:	A powerful but elegant CSS compiler that makes CSS fun again
+Summary(pl.UTF-8):	Potężny, ale elegancki kompilator CSS przywracający przyjemność z CSS
 Name:		ruby-%{pkgname}
-Version:	3.4.2
-Release:	4
+Version:	3.4.13
+Release:	1
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
-# Source0-md5:	51f92be34834e250f4f55d93dbd2024a
+# Source0-md5:	61a18b38136685527e1672939b4d32db
 Patch0:		version.patch
 URL:		http://github.com/rtomayko/sass
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.665
+BuildRequires:	ruby >= 1.8.7
 BuildRequires:	sed >= 4.0
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -25,9 +27,15 @@ rules, variables, mixins, selector inheritance, and more. It's
 translated to well-formatted, standard CSS using the command line tool
 or a web-framework plugin.
 
+%description -l pl.UTF-8
+Sass czyni CSS z powrotem przyjemnym. Sass jest rozszerzeniem CSS3,
+dodającym zagnieżdżone reguły, zmienne, domieszki, dziedziczenie
+selektorów itd. Jest tłumaczony na dobrze sformatowany, standardowy
+XML przy użyciu narzędzia linii poleceń lub wtyczki do szkieletu WWW.
+
 %package rdoc
 Summary:	HTML documentation for %{pkgname}
-Summary(pl.UTF-8):	Dokumentacja w formacie HTML dla %{pkgname}
+Summary(pl.UTF-8):	Dokumentacja w formacie HTML dla pakietu %{pkgname}
 Group:		Documentation
 Requires:	ruby >= 1:1.8.7-4
 
@@ -35,11 +43,11 @@ Requires:	ruby >= 1:1.8.7-4
 HTML documentation for %{pkgname}.
 
 %description rdoc -l pl.UTF-8
-Dokumentacja w formacie HTML dla %{pkgname}.
+Dokumentacja w formacie HTML dla pakietu %{pkgname}.
 
 %package ri
 Summary:	ri documentation for %{pkgname}
-Summary(pl.UTF-8):	Dokumentacja w formacie ri dla %{pkgname}
+Summary(pl.UTF-8):	Dokumentacja w formacie ri dla pakietu %{pkgname}
 Group:		Documentation
 Requires:	ruby
 
@@ -47,7 +55,7 @@ Requires:	ruby
 ri documentation for %{pkgname}.
 
 %description ri -l pl.UTF-8
-Dokumentacji w formacie ri dla %{pkgname}.
+Dokumentacji w formacie ri dla pakietu %{pkgname}.
 
 %prep
 %setup -q -n %{pkgname}-%{version}
