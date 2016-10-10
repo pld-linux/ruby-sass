@@ -6,14 +6,14 @@
 Summary:	A powerful but elegant CSS compiler that makes CSS fun again
 Summary(pl.UTF-8):	Potężny, ale elegancki kompilator CSS przywracający przyjemność z CSS
 Name:		ruby-%{pkgname}
-Version:	3.4.13
-Release:	2
+Version:	3.4.22
+Release:	1
 License:	MIT
 Group:		Development/Languages
 Source0:	http://rubygems.org/gems/%{pkgname}-%{version}.gem
-# Source0-md5:	61a18b38136685527e1672939b4d32db
+# Source0-md5:	857f0bc182b254271e3f03654ed5d2ab
 Patch0:		version.patch
-URL:		http://github.com/rtomayko/sass
+URL:		https://github.com/sass/sass
 BuildRequires:	rpm-rubyprov
 BuildRequires:	rpmbuild(macros) >= 1.665
 BuildRequires:	ruby >= 1.8.7
@@ -22,13 +22,13 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Sass makes CSS fun again. Sass is an extension of CSS3, adding nested
+Sass makes CSS fun again. Sass is an extension of CSS, adding nested
 rules, variables, mixins, selector inheritance, and more. It's
 translated to well-formatted, standard CSS using the command line tool
 or a web-framework plugin.
 
 %description -l pl.UTF-8
-Sass czyni CSS z powrotem przyjemnym. Sass jest rozszerzeniem CSS3,
+Sass czyni CSS z powrotem przyjemnym. Sass jest rozszerzeniem CSS,
 dodającym zagnieżdżone reguły, zmienne, domieszki, dziedziczenie
 selektorów itd. Jest tłumaczony na dobrze sformatowany, standardowy
 XML przy użyciu narzędzia linii poleceń lub wtyczki do szkieletu WWW.
