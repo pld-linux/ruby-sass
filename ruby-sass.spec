@@ -34,28 +34,28 @@ selektorów itd. Jest tłumaczony na dobrze sformatowany, standardowy
 XML przy użyciu narzędzia linii poleceń lub wtyczki do szkieletu WWW.
 
 %package rdoc
-Summary:	HTML documentation for %{pkgname}
-Summary(pl.UTF-8):	Dokumentacja w formacie HTML dla pakietu %{pkgname}
+Summary:	HTML documentation for Ruby %{pkgname} module
+Summary(pl.UTF-8):	Dokumentacja w formacie HTML dla modułu %{pkgname} języka Ruby
 Group:		Documentation
 Requires:	ruby >= 1:1.8.7-4
 
 %description rdoc
-HTML documentation for %{pkgname}.
+HTML documentation for Ruby %{pkgname} module.
 
 %description rdoc -l pl.UTF-8
-Dokumentacja w formacie HTML dla pakietu %{pkgname}.
+Dokumentacja w formacie HTML dla modułu %{pkgname} języka Ruby.
 
 %package ri
-Summary:	ri documentation for %{pkgname}
-Summary(pl.UTF-8):	Dokumentacja w formacie ri dla pakietu %{pkgname}
+Summary:	ri documentation for Ruby %{pkgname} module
+Summary(pl.UTF-8):	Dokumentacja w formacie ri dla modułu %{pkgname} języka Ruby
 Group:		Documentation
 Requires:	ruby
 
 %description ri
-ri documentation for %{pkgname}.
+ri documentation for Ruby %{pkgname} module.
 
 %description ri -l pl.UTF-8
-Dokumentacji w formacie ri dla pakietu %{pkgname}.
+Dokumentacji w formacie ri dla modułu %{pkgname} języka Ruby.
 
 %prep
 %setup -q -n %{pkgname}-%{version}
@@ -73,11 +73,11 @@ s=$(ruby -e "puts File.read('VERSION_NAME').strip.inspect")
 %if %{with doc}
 rdoc --ri --op ri lib
 rdoc --op rdoc lib
-rm -r ri/ActionController
-rm -r ri/Merb
-rm -r ri/OrderedHash
-rm ri/cache.ri
-rm ri/created.rid
+%{__rm} -r ri/ActionController
+%{__rm} -r ri/Merb
+%{__rm} -r ri/OrderedHash
+%{__rm} ri/cache.ri
+%{__rm} ri/created.rid
 %endif
 
 %install
